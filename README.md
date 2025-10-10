@@ -16,54 +16,60 @@ This Python-based GUI tool simplifies the process of localizing text found withi
 
 <img width="716" height="600" alt="Screenshot_2025-08-27_21-07-09" src="https://github.com/user-attachments/assets/a979e93e-ef3d-499b-a437-6c7f3bba8fc1" />
 
+An updated and more accurate description based on the Python script provided:
+
 ## Features
 
-*   **Text Extraction:** Extracts text content from the `m_Script` field within JSON files, supporting two distinct formats:
-    *   **XML-like Structure (`<entry name="...">...</entry>`):** Ideal for JSONs where the `m_Script` contains XML-like elements. It correctly handles HTML entities and skips comment entries.
-    *   **Embedded JSON String (`{"key": "value"}`):** Designed for JSONs where the `m_Script` field holds an escaped JSON string.
-*   **Translation-Friendly Output:** Exports texts into `.txt` files, with each translatable string on a new line and newlines (`\n`) represented as `\\n` for easier editing. Empty entries are marked with `---`.
-*   **Seamless Import:** Imports translated texts from `.txt` files, re-inserting them into the original JSON structure to create new, localized JSON files.
-*   **User-Friendly Interface:** A Tkinter-based graphical user interface for intuitive operation.
-*   **Error Handling & Logging:** Provides real-time feedback and error messages within the GUI.
+*   **Multi-Format Text Extraction:** Extracts text from the `m_Script` field within JSON files, supporting three distinct formats:
+    *   **Method 1 (XML-like):** Handles `<entry name="...">...</entry>` structures. It correctly processes HTML entities and ignores commented-out entries (those starting with `//`).
+    *   **Method 2 (Embedded JSON):** Parses `m_Script` content that is formatted as an escaped JSON string (e.g., `"{\"key\": \"value\"}"`).
+    *   **Method 3 (CSV-like):** Processes `m_Script` content formatted as a CSV string. It specifically reads the "English" column by default, making it suitable for localization sheets stored as CSV text.
+*   **Translation-Friendly Output:** Exports extracted text into `.txt` files. Each string is placed on a new line and enclosed in double quotes. Newline characters are preserved as `\\n` for easy editing in text editors. Empty entries are clearly marked with a `---` placeholder.
+*   **Seamless Re-Import:** Imports translated text from the `.txt` files, intelligently rebuilding the original JSON structure. It creates new, localized JSON files ready for use.
+*   **User-Friendly Interface:** A simple and intuitive graphical user interface (GUI) built with Tkinter, allowing for easy operation without command-line interaction.
+*   **Logging and Feedback:** A log area provides real-time progress updates, error messages, and clear instructions, ensuring the user is always informed of the tool's status.
 
 ## Python Requirements
 
-This tool uses standard Python libraries and does not require any external packages to be installed via `pip`.
+This tool uses standard Python libraries and does not require any external packages to be installed.
 
 *   Python 3.x
-*   `tkinter` (usually included with Python installations)
+*   `tkinter` (typically included with Python)
 *   `json`
 *   `re`
 *   `html`
 *   `os`
 *   `threading`
+*   `csv`
+*   `io`
 
 ## How to Use
 
-The application provides detailed instructions directly within its log area upon startup. Follow these general steps:
+The application provides detailed instructions in its log window upon startup.
 
-1.  **Prepare Original Files:**
+1.  **Prepare Files:**
     *   Create a folder named `Original_TextsAsset` in the same directory as the script.
-    *   Place all your original Unity TextAsset JSON files (e.g., `en-CAB-....json`, `EN_UI-resources.assets-3194.json`) into this `Original_TextsAsset` folder.
+    *   Place all your original Unity TextAsset JSON files into the `Original_TextsAsset` folder.
 
 2.  **Export Texts for Translation:**
-    *   Run the script (`python your_script_name.py`).
-    *   In the GUI, carefully **select the correct "Text Extraction Method"** from the dropdown menu:
-        *   Choose **"USE METHOD 1"** for JSON files where `m_Script` contains XML-like `<entry name="...">...</entry>` tags (e.g., `EN_UI-resources.assets-3194.json`).
-        *   Choose **"USE METHOD 2"** for JSON files where `m_Script` contains an escaped JSON string like `{"key": "value"}` (e.g., `en-CAB-....json`).
+    *   Run the Python script.
+    *   From the dropdown menu in the GUI, **select the correct extraction method** that matches your JSON file's structure:
+        *   **USE METHOD 1:** For files where `m_Script` contains XML-like tags (`<entry name="...">...</entry>`).
+        *   **USE METHOD 2:** For files where `m_Script` contains an escaped JSON string (`{"key": "value"}`).
+        *   **USE METHOD 3:** For files where `m_Script` contains CSV-formatted text with a header row that includes an "English" column.
     *   Click the **"Export Texts to TXT"** button.
-    *   A new folder named `Output_Clean_Text` will be created, containing `.txt` files for each processed JSON.
+    *   A new folder, `Output_Clean_Text`, will be created containing the exported `.txt` files.
 
-3.  **Translate the Text Files:**
-    *   Open the `.txt` files located in the `Output_Clean_Text` folder using a text editor.
-    *   Translate the text content within the double quotes.
-    *   **Important:**
-        *   Do **not** change the double quotes.
-        *   Maintain `\\n` for newlines if you want them in the final output.
-        *   Keep the placeholder `---` (three hyphens) exactly as is for any text entry that you wish to remain empty.
+3.  **Translate the Text:**
+    *   Open the `.txt` files in the `Output_Clean_Text` folder.
+    *   Translate the text inside the double quotes on each line.
+    *   **Important Rules:**
+        *   Do **not** remove the surrounding double quotes.
+        *   Preserve the `\\n` characters to maintain line breaks.
+        *   If an entry should be empty, keep the `---` placeholder exactly as is.
 
 4.  **Import Translated Texts:**
-    *   After saving all your translated `.txt` files, return to the GUI.
-    *   Ensure the **same "Text Extraction Method"** used for export is still selected.
+    *   Once you have saved your translated `.txt` files, return to the application.
+    *   Ensure the **same method** you used for exporting is still selected in the dropdown.
     *   Click the **"Import Texts from TXT"** button.
-    *   A new folder named `Output_TextsAsset` will be created, containing the new JSON files with your translations merged in. These are ready for use in your game.
+    *   A final folder, `Output_TextsAsset`, will be created. It will contain the newly generated JSON files with your translations integrated, ready to be used in your project.
