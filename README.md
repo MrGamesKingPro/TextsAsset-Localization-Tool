@@ -8,7 +8,7 @@ This GUI tool extracts and imports localized texts from Unity-exported JSON Text
 
 ## Download tool
 
-[TextAsset-Localization-Tool](https://github.com/MrGamesKingPro/TextsAsset-Localization-Tool/releases/tag/TextsAsset-Localization-Tool.V.1.0)
+<img width="713" height="599" alt="Screenshot_2025-10-11_00-02-47" src="https://github.com/user-attachments/assets/a4101529-0e70-432c-9575-04dbf1e21d6a" />
 
 # TextAsset Localization Tool
 
