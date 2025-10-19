@@ -53,15 +53,16 @@ The application provides detailed instructions in its log window upon startup.
 
 2.  **Export Texts for Translation:**
     *   Run the Python script.
-    *   From the dropdown menu in the GUI, **select the correct extraction method** that matches your JSON file's structure:
+    *   From the dropdown menu in the GUI, **select the correct extraction method** that matches the structure of your JSON files:
         *   **USE METHOD 1:** For files where `m_Script` contains XML-like tags (`<entry name="...">...</entry>`).
         *   **USE METHOD 2:** For files where `m_Script` contains an escaped JSON string (`{"key": "value"}`).
         *   **USE METHOD 3:** For files where `m_Script` contains CSV-formatted text with a header row that includes an "English" column.
+        *   **USE METHOD 4:** For files where `m_Script` contains a JSON table (e.g., `{"General":[{"StringID", "English",...}]}`).
     *   Click the **"Export Texts to TXT"** button.
     *   A new folder, `Output_Clean_Text`, will be created containing the exported `.txt` files.
 
 3.  **Translate the Text:**
-    *   Open the `.txt` files in the `Output_Clean_Text` folder.
+    *   Open the `.txt` files located in the `Output_Clean_Text` folder.
     *   Translate the text inside the double quotes on each line.
     *   **Important Rules:**
         *   Do **not** remove the surrounding double quotes.
