@@ -8,13 +8,13 @@ This GUI tool extracts and imports localized texts from Unity-exported JSON Text
 
 ## Download tool
 
-<img width="717" height="601" alt="Screenshot_2025-10-19_21-48-15" src="https://github.com/user-attachments/assets/b915eadb-a128-42e8-8270-efcf01becda5" />
+[TextsAsset-Localization-Tool](https://github.com/MrGamesKingPro/TextsAsset-Localization-Tool/releases)
 
 # TextAsset Localization Tool
 
 This Python-based GUI tool simplifies the process of localizing text found within Unity's `TextsAsset` JSON files. It allows you to extract translatable strings into clean text files for editing and then import those translated texts back into new JSON files, maintaining the original structure.
 
-<img width="716" height="600" alt="Screenshot_2025-08-27_21-07-09" src="https://github.com/user-attachments/assets/a979e93e-ef3d-499b-a437-6c7f3bba8fc1" />
+<img width="717" height="601" alt="Screenshot_2025-10-19_21-48-15" src="https://github.com/user-attachments/assets/b915eadb-a128-42e8-8270-efcf01becda5" />
 
 An updated and more accurate description based on the Python script provided:
 
